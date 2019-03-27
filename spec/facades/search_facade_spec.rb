@@ -4,9 +4,11 @@ describe 'SearchFacade' do
 
   describe 'class' do
     it 'exist' do
-      facade = SearchFacade.new("params")
+      VCR.use_cassette("facades/NRELService") do
+        facade = SearchFacade.new("80206")
 
-      expect(facade).to be_a(SearchFacade)
+        expect(facade).to be_a(SearchFacade)
+      end
     end
   end
 
