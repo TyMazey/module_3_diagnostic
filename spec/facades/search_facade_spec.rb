@@ -14,7 +14,7 @@ describe 'SearchFacade' do
     describe '.result_count' do
       it 'can return the total of a search result' do
         VCR.use_cassette("facades/NRELService") do
-          facade = SearchFacade.new("80206").
+          facade = SearchFacade.new("80206")
 
           expect(facade.result_count).to eq(4)
         end
