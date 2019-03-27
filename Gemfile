@@ -26,5 +26,5 @@ group :test do
   gem 'vcr'
   gem 'webmock'
   gem 'capybara'
+  gem 'factory_bot'
 end
-
