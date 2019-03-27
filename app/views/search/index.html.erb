@@ -1,2 +1,12 @@
 <h1>Search Reults</h1>
 <h3>Results <%= facade.result_count %></h3>
+
+<section class="stations">
+  <% facade.stations.each do |station| %>
+    <p>Name: <%= station.name %></p>
+    <p>Address: <%= station.address %></p>
+    <p>Fuel Types: <%=  station.fuel_types %></p>
+    <p>Distance: <%= station.distance  %></p>
+    <p>Access: <%= station.access_times %></p>
+  <% end %>
+</section>

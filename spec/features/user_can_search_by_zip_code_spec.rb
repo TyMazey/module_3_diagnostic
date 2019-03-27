@@ -3,22 +3,45 @@ require 'rails_helper'
 describe 'as user' do
 
   it 'lets me search for stations by my zip code' do
+    VCR.use_cassette("views/search") do
 
-    visit '/'
+      visit '/'
 
-    fill_in :q, with: '80206'
-    click_on 'Locate'
+      fill_in :q, with: '80206'
+      click_on 'Locate'
 
-    expect(current_path).to eq('/search')
+      expect(current_path).to eq('/search')
+    end
   end
 
   it 'shows me the total results of stations that match my query' do
-    visit '/'
+    VCR.use_cassette("views/search") do
 
-    fill_in :q, with: '80206'
-    click_on 'Locate'
+      visit '/'
 
-    expect(page).to have_content("Results 15")
+      fill_in :q, with: '80206'
+      click_on 'Locate'
+
+      expect(page).to have_content("Results 4")
+    end
+  end
+
+  it 'shows me the total results of stations that match my query' do
+
+      visit '/'
+
+      VCR.use_cassette("views/search") do
+      fill_in :q, with: '80206'
+      click_on 'Locate'
+
+      within '.stations' do
+        expect(page).to have_content("Name: PUBLIC STATIONS")
+        expect(page).to have_content("Address: 2951-2985 E 3rd Ave")
+        expect(page).to have_content("Fuel Types: E")
+        expect(page).to have_content("Distance: 0.62888")
+        expect(page).to have_content("Access: 24 hours daily")
+      end
+    end
   end
 end
 #

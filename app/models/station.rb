@@ -6,10 +6,10 @@ class Station
               :access_times
 
   def initialize(info)
-    @name = info["name"]
-    @address = info["address"]
-    @fuel_types = info["fuel_types"]
+    @name = info["station_name"]
+    @address = info["street_address"]
+    @fuel_types = info["fuel_type_code"]
     @distance = info["distance"]
-    @access_times = info["access_times"]
+    @access_times = info["access_days_time"]
   end
 end

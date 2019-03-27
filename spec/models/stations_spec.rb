@@ -3,7 +3,8 @@ require 'rails_helper'
 describe 'Station' do
 
   it 'exist' do
-    info = {"name" => "name", "address" => "123", "fuel_types" => "E", "distance" => "100", "access_times" => "10"}
+    info = {"station_name" => "name", "street_address" => "123", "fuel_type_code" => "E", "distance" => "100", "access_days_time" => "10"}
+
 
     station = Station.new(info)
 
@@ -11,7 +12,7 @@ describe 'Station' do
   end
 
   it 'has attributes' do
-    info = {"name" => "name", "address" => "123", "fuel_types" => "E", "distance" => "100", "access_times" => "10"}
+    info = {"station_name" => "name", "street_address" => "123", "fuel_type_code" => "E", "distance" => "100", "access_days_time" => "10"}
     station = Station.new(info)
 
     expect(station.name).to eq("name")

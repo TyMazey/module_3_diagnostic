@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
 
   def index
-    render locals: {facade: SearchFacade.new(search_params)}
+    render locals: {facade: SearchFacade.new(search_params["q"])}
   end
 
 
