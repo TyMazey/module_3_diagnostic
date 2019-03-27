@@ -3,13 +3,15 @@ require 'rails_helper'
 describe 'Station' do
 
   it 'exist' do
-    station = Station.new(nil)
+    info = {"name" => "name", "address" => "123", "fuel_types" => "E", "distance" => "100", "access_times" => "10"}
 
-    expect(station).to eq(Station)
+    station = Station.new(info)
+
+    expect(station).to be_a(Station)
   end
 
   it 'has attributes' do
-    info = {name: "name", address: "123", fuel_types: "E", distance: "100", access_times: "10"}
+    info = {"name" => "name", "address" => "123", "fuel_types" => "E", "distance" => "100", "access_times" => "10"}
     station = Station.new(info)
 
     expect(station.name).to eq("name")
