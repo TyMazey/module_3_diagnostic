@@ -6,7 +6,7 @@ describe 'as user' do
 
     visit '/'
 
-    fill_in :search, with: '80206'
+    fill_in :q, with: '80206'
     click_on 'Locate'
 
     expect(current_path).to eq('/search')
@@ -15,13 +15,13 @@ describe 'as user' do
   it 'shows me the total results of stations that match my query' do
     visit '/'
 
-    fill_in :search, with: '80206'
+    fill_in :q, with: '80206'
     click_on 'Locate'
 
     expect(page).to have_content("Results 15")
   end
 end
-# 
+#
 # As a user
 # When I visit "/"
 # And I fill in the search form with 80206 (Note: Use the existing search form)
