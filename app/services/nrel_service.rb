@@ -6,13 +6,13 @@ class NRELService
 
 
   def get_stations
-    @stations ||= parse_response(get_response)
+    @stations ||= parse_response(get_response(@search_params))
   end
 
   private
 
   def conn
-    Faraday.new(url: "https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest") do |faraday|
+    Faraday.new(url: "https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json") do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end
@@ -25,11 +25,11 @@ class NRELService
       req.params['zip'] = zip
       req.params['limit'] = '15'
       req.params['location'] = zip
-      req.params['api_key'] = ENV[NREL_API_KEY]
+      req.params['api_key'] = ENV['NREL_API_KEY']
     end
   end
 
     def parse_response(response)
-      JSON.parse(response)
+      JSON.parse(response.body)
     end
 end
