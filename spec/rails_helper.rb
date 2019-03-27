@@ -22,6 +22,7 @@ require 'rspec/rails'
 VCR.configure do |config|
   config.cassette_library_dir = "fixtures/vcr_cassettes"
   config.hook_into :webmock
+  config.filter_sensitive_data("<NREL_API_KEY>") { ENV['NREL_API_KEY'] }
 end
 #
 # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
